@@ -1,4 +1,0 @@
-screenshots/
-│   ├── login.png
-│   ├── otp.png
-│   ├── admin_access.png
