@@ -1,4 +1,3 @@
-
 from flask import Flask, redirect, request, session, jsonify
 import requests
 import jwt
@@ -72,71 +71,3 @@ def admin():
 
 app.run(port=5000)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Draft 1
-#from flask import Flask, redirect, request, session
-#import requests
-#
-#app = Flask(__name__)
-#app.secret_key = "secret"
-#
-## Keycloak configuration
-#KEYCLOAK_URL = "http://localhost:8080"
-#REALM = "Infotact"
-#CLIENT_ID = "flask-app"
-#CLIENT_SECRET = "FkNPbumVPGSd2Qh9jgiel6BPuUHQOpud"
-#REDIRECT_URI = "http://localhost:5000/callback"
-#
-#@app.route("/")
-#def home():
-#    return '<a href="/login">Login with Keycloak</a>'
-#
-#@app.route("/login")
-#def login():
-#    auth_url = f"{KEYCLOAK_URL}/realms/{REALM}/protocol/openid-connect/auth"
-#    return redirect(f"{auth_url}?client_id={CLIENT_ID}&response_type=code&redirect_uri={REDIRECT_URI}")
-#
-#@app.route("/callback")
-#def callback():
-#    code = request.args.get("code")
-#
-#    token_url = f"{KEYCLOAK_URL}/realms/{REALM}/protocol/openid-connect/token"
-#
-#    data = {
-#        "grant_type": "authorization_code",
-#        "code": code,
-#        "redirect_uri": REDIRECT_URI,
-#        "client_id": CLIENT_ID,
-#        "client_secret": CLIENT_SECRET
-#    }
-#
-#    token = requests.post(token_url, data=data).json()
-#
-#    session["access_token"] = token.get("access_token")
-#
-#    return "Login Successful! IAM SSO working."
-#
-#app.run(port=5000)
-#
