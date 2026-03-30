@@ -1,0 +1,76 @@
+# =========================
+
+# WEEK 1 – ASSET DISCOVERY
+
+# =========================
+
+nmap -A 192.168.X.0/24
+
+# =========================
+
+# WEEK 2 – VULNERABILITY SCAN
+
+# =========================
+
+# (Performed using OpenVAS GUI)
+
+# - Unauthenticated Scan
+
+# - Authenticated Scan
+
+# =========================
+
+# WEEK 3 – COMPLIANCE CHECK
+
+# =========================
+
+# Install OpenSCAP
+
+sudo apt update
+sudo apt install openscap-scanner -y
+
+# Verify installation
+
+oscap --version
+
+# List available SCAP content
+
+ls /usr/share/xml/scap/ssg/content/
+
+# Run CIS Level 1 Scan
+
+sudo oscap xccdf eval 
+--profile xccdf_org.ssgproject.content_profile_cis_level1_server 
+--results results.xml 
+--report cis_report.html 
+/usr/share/xml/scap/ssg/content/ssg-ubuntu2004-ds.xml
+
+# =========================
+
+# WEEK 4 – REMEDIATION
+
+# =========================
+
+# Edit SSH config
+
+sudo nano /etc/ssh/sshd_config
+
+# Change:
+
+PermitRootLogin no
+
+# Restart SSH
+
+sudo systemctl restart ssh
+
+# =========================
+
+# RE-SCAN
+
+# =========================
+
+sudo oscap xccdf eval 
+--profile xccdf_org.ssgproject.content_profile_cis_level1_server 
+--results results_after.xml 
+--report cis_report_after.html 
+/usr/share/xml/scap/ssg/content/ssg-ubuntu2004-ds.xml
